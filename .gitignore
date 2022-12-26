@@ -2,4 +2,6 @@ venv
 token
 fonts
 data
+.env
 *.jpg
+*.log
