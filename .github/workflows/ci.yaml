@@ -15,7 +15,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version:  echo "${{ matrix.python-version }}" >> $GITHUB_OUTPUT
     - name: Display Python version
       run: |
         $pythonVersion = (python --version)
