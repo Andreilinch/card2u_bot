@@ -28,12 +28,12 @@ user_agent = random.choice(USER_AGENTS)
 
 options = webdriver.ChromeOptions()
 options.headless = True
-options.add_argument("User-Agent=%s" % user_agent)
+options.add_argument(f"User-Agent={user_agent}")
 
 driver = webdriver.Chrome(
     options=options, service=Service(ChromeDriverManager().install())
 )
-driver.get(LINKS)
+driver.get(f"{LINKS}")
 driver.implicitly_wait(WAIT_TO_RENDER_S)
 
 cards_links = driver.find_elements(By.TAG_NAME, "img")
@@ -50,7 +50,7 @@ while True:
             time.sleep(random.randint(1, 5))
             # ur.urlretrieve(link, f"./data/train/train_{i}.jpg")
 
-            img_data = requests.get(link).content
+            img_data = requests.get(link, timeout=1).content
             with open(f"./data/train/train_{PAGE}_{i}.png", "wb") as fileimage:
                 fileimage.write(img_data)
 

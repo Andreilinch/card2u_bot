@@ -10,9 +10,14 @@ bot = telebot.TeleBot(os.getenv("TOKEN"))
 
 @bot.message_handler(commands=["start"])
 def start(message):
+    """Initial messages and design
+
+    Args:
+        message (_type_): _description_
+    """
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("🌄 Случайный текст 🌠")
-    item2 = types.KeyboardButton("Другое ➡️")
+    item1 = types.KeyboardButton(text="🌄 Случайный текст 🌠")
+    item2 = types.KeyboardButton(text="Другое ➡️")
 
     markup.add(item1, item2)
 
@@ -29,6 +34,11 @@ def start(message):
 
 @bot.message_handler()
 def interaction(message):
+    """Reply function
+
+    Args:
+        message (_type_): _description_
+    """
     bot.send_message(message.chat.id, message.text)
 
 
