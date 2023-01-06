@@ -7,12 +7,12 @@ load_dotenv()
 
 bot = telebot.TeleBot(os.getenv("TOKEN"))
 
+
 @bot.message_handler(commands=["start"])
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton("🌄 Случайный текст 🌠")
     item2 = types.KeyboardButton("Другое ➡️")
-
 
     markup.add(item1, item2)
 
